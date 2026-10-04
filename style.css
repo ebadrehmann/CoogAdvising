@@ -21,7 +21,8 @@ body {
   background-color: #373c4f;
   color: #fff;
 
-  width: 1200px;
+  width: 100%;
+  max-width: 1200px;
   min-height: 850px;
   margin: 0 auto;
   padding: 5px;
@@ -66,26 +67,25 @@ body {
   .weekdays {
     width: 100%;
     height: 100px;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     align-items: center;
-    justify-content: space-between;
+    text-align: center;
     padding: 0 20px;
     font-size: 1rem;
     font-weight: 500;
   }
 
   .days {
-    display: flex;
-    justify-content: space-between;
-
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     width: 100%;
-    flex-wrap: wrap;
     font-weight: 500;
     padding: 0 20px;
     margin-bottom: 20px;
 
     .day {
-      width: 14.28%;
+      width: auto;
       height: 90px;
       display: flex;
       align-items: center;
@@ -139,7 +139,80 @@ body {
       width: 5%;
       height: 5px;
       border-radius: 30px;
+
       transform: translateX(-50%);
+    }
+
+    .event:hover::after{
+      background-color: #fff;
+    }
+
+    .active.event::after{
+      background-color: #fff;
+    }
+  }
+
+  .goto-today{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    color: var(--primary-clr);
+
+    gap: 5px;
+
+  }
+}
+
+
+/*Responsiveness*/
+@media (max-width: 600px) {
+  body {
+    align-items: flex-start;
+  }
+
+  .container {
+    min-height: 100vh;
+    flex-direction: column;
+    border-radius: 0;
+  }
+
+  .container1 {
+    width: 100%;
+    padding: 10px;
+  }
+
+  #calendar {
+    min-height: 0;
+
+    .month {
+      height: 110px;
+      padding: 0 16px;
+      font-size: 1rem;
+    }
+
+    .weekdays {
+      height: 60px;
+      padding: 0 8px;
+      font-size: 0.75rem;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+    }
+
+    .days {
+      padding: 0 8px;
+      margin-bottom: 12px;
+
+      .day {
+        width: auto;
+        height: 60px;
+      }
+    }
+
+    .goto-today {
+      padding: 0 8px;
+      margin-bottom: 12px;
     }
   }
 }
