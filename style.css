@@ -1,29 +1,145 @@
-*{
-    background-color: #272727;
-    color: white;
+:root {
+  --primary-clr: #b38add;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat";
 }
 
 body {
-    display: flex;
-    justify-content: center; /* horizontal */
-    align-items: center;     /* vertical */
-    min-height: 100vh;
-    margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e2e1dc;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #1c1c1c;
-    width: 75vw;
-    height: 75vh;
-    border-radius: 3%;
+  background-color: #373c4f;
+  color: #fff;
+
+  width: 1200px;
+  min-height: 850px;
+  margin: 0 auto;
+  padding: 5px;
+
+  display: flex;
+  border-radius: 10px;
 }
 
+.container1 {
+  width: 60%;
+  padding: 20px;
+}
 
+#calendar {
+  background-color: #fff;
+  color: #878895;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
 
-.container1{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  .month {
+    width: 100%;
+    height: 150px;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    font-size: 1.2rem;
+  }
 
+  #prev,
+  #next {
+    cursor: pointer;
+  }
+
+  .weekdays {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .days {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    flex-wrap: wrap;
+    font-weight: 500;
+    padding: 0 20px;
+    margin-bottom: 20px;
+
+    .day {
+      width: 14.28%;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--primary-clr);
+      border: 1px solid #f5f5ff;
+    }
+
+    .day:not(.prev-date, .next-date):hover {
+      color: #fff;
+      background-color: var(--primary-clr);
+    }
+
+    .prev-date,
+    .next-date {
+      color: #b3b3b3;
+    }
+
+    .active {
+      position: relative;
+      font-size: 2rem;
+      color: #fff;
+      background-color: var(--primary-clr);
+    }
+
+    .active::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      box-shadow: 0 0 10px 2px var(--primary-clr);
+    }
+
+    .today {
+      font-size: 2rem;
+    }
+
+    .event {
+      position: relative;
+    }
+
+   /* ::after basically adds a div inside the day div (the box)*/
+    .event::after {
+      background-color: var(--primary-clr);
+      content: "";
+      position: absolute;
+      bottom: 10%;
+      width: 5%;
+      height: 5px;
+      border-radius: 30px;
+      transform: translateX(-50%);
+    }
+  }
 }
