@@ -1,0 +1,29 @@
+*{
+    background-color: #272727;
+    color: white;
+}
+
+body {
+    display: flex;
+    justify-content: center; /* horizontal */
+    align-items: center;     /* vertical */
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1c1c1c;
+    width: 75vw;
+    height: 75vh;
+    border-radius: 3%;
+}
+
+
+
+.container1{
+    display: flex;
+
+}
