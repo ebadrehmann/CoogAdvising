@@ -15,18 +15,20 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <title>Coog Advising</title>
   </head>
   <body>
     <div class="container">
       <div class="container1">
         <div id="calendar">
+          <!-- nav bar-->
           <div class="month">
             <i class="material-icons" id="prev">chevron_left</i>
-            <div class="date">November 2022</div>
+            <div class="date"></div>
             <i class="material-icons" id="next">chevron_right</i>
           </div>
+          <!-- calendar nav bar-->
           <div class="weekdays">
             <div>Mon</div>
             <div>Tue</div>
@@ -36,55 +38,25 @@
             <div>Sat</div>
             <div>Sun</div>
           </div>
-          <div class="days">
-            <div class="day prev-date">30</div>
-            <div class="day prev-date">31</div>
-            <div class="day">1</div>
-            <div class="day">2</div>
-            <div class="day">3</div>
-            <div class="day">4</div>
-            <div class="day">5</div>
-            <div class="day">6</div>
-            <div class="day">7</div>
-            <div class="day">8</div>
-            <div class="day">9</div>
-            <div class="day">10</div>
-            <div class="day">11</div>
-            <div class="day">12</div>
-            <div class="day event">13</div>
-            <div class="day active event">14</div>
-            <div class="day today">15</div>
-            <div class="day">16</div>
-            <div class="day">17</div>
-            <div class="day">18</div>
-            <div class="day">19</div>
-            <div class="day">20</div>
-            <div class="day">21</div>
-            <div class="day">22</div>
-            <div class="day">23</div>
-            <div class="day">24</div>
-            <div class="day">25</div>
-            <div class="day">26</div>
-            <div class="day">27</div>
-            <div class="day">28</div>
-            <div class="day">29</div>
-            <div class="day">30</div>
-            <div class="day next-date">1</div>
-            <div class="day next-date">2</div>
-            <div class="day next-date">3</div>
-          </div>
+          <!-- calendar items-->
+          <div class="days"></div>
+
+          <!-- footer -->
           <div class="goto-today">
-            <div class="goto">
-              <input type="text" placeholder = "mm/yyyy" class = "date-input">
-              <button class = "goto-btn">Go</button>
-            </div>
-            <button class="today-btn">Today</button>
+            <button id="today-btn">Today</button>
           </div>
         </div>
       </div>
 
+      <!-- advisor cards -->
       <div class="container2">
-        <div id="card"></div>
+        <div id="header">Date</div>
+        <div id="card">
+
+        </div>
+        <div id="footer">
+          <button id="next-btn">Next</button>
+        </div>
       </div>
     </div>
   </body>
