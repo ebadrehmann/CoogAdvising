@@ -1,0 +1,169 @@
+:root {
+  --primary-clr: #ef4056;
+  --uh-deep-red: #ff7183;
+  --page-bg: #121212;
+  --ink: #1c1a1b;
+  --surface: #242122;
+  --muted: #b8b2b4;
+  --border: #393436;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat";
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--page-bg);
+  color: #fff;
+}
+
+.page-container {
+  width: 92%;
+  max-width: 1000px;
+  margin: 32px auto;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: var(--ink);
+}
+
+main {
+  padding: 24px;
+}
+
+main > section {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background-color: var(--surface);
+}
+
+main > section h2 {
+  margin: 0 0 20px;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+fieldset {
+  margin: 0 0 20px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+}
+
+legend {
+  padding: 0 8px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.form-row {
+  display: flex;
+  gap: 18px;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 0;
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  color: #fff;
+  background-color: var(--page-bg);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+select {
+  color-scheme: dark;
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-clr);
+  box-shadow: 0 0 0 3px rgb(239 64 86 / 20%);
+}
+
+#validstudentId {
+  color: var(--primary-clr);
+}
+
+button {
+  padding: 8px 14px;
+  font: inherit;
+  color: var(--primary-clr);
+  background-color: transparent;
+  border: 1px solid var(--primary-clr);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: color 150ms ease, background-color 150ms ease;
+}
+
+button:hover {
+  color: #fff;
+  background-color: var(--primary-clr);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--uh-deep-red);
+  outline-offset: 3px;
+}
+
+@media (max-width: 700px) {
+  body {
+    align-items: flex-start;
+  }
+
+  .page-container {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  main {
+    padding: 18px;
+  }
+
+  main > section {
+    padding: 18px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  button {
+    width: 100%;
+  }
+}

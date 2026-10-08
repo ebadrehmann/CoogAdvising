@@ -5,6 +5,8 @@ prev = document.querySelector("#prev"),
 next = document.querySelector("#next");
 todayButton = document.querySelector("#today-btn")
 
+day = document.getElementsByClassName("day")
+
 
 let today = new Date();
 let activeDay;
@@ -102,15 +104,23 @@ function nextMonth(){
 prev.addEventListener("click", prevMonth);
 next.addEventListener("click", nextMonth)
 
+day.addEventListener("click", () =>{
+
+  // set header = selected month & day
+
+  // how do we know what # month & day we've selected when it's been initialized in the calendar
+  header.innerHTML = "Testing";
+
+});
+
+
 todayButton.addEventListener("click", () => {
   today = new Date();
   month = today.getMonth();
   year = today.getFullYear();
   initCalendar();
-})
-
+});
 
 
 function initCard(){
-  
 }
