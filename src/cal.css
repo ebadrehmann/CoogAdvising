@@ -1,0 +1,268 @@
+:root {
+  --primary-clr: #ef4056;
+  --uh-deep-red: #ff7183;
+  --page-bg: #121212;
+  --ink: #1c1a1b;
+  --surface: #242122;
+  --muted: #b8b2b4;
+  --border: #393436;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat";
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--page-bg);
+}
+
+.container {
+  background-color: var(--ink);
+  color: #fff;
+
+  width: 100%;
+  max-width: 1200px;
+  min-height: 850px;
+  margin: 0 auto;
+  padding: 5px;
+
+  display: flex;
+  border-radius: 10px;
+}
+
+.container1 {
+  width: 90%;
+  padding: 20px;
+
+}
+
+#calendar {
+  background-color: var(--surface);
+  color: var(--muted);
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  .month {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    font-size: 1.2rem;
+  }
+
+  #prev,
+  #next {
+    cursor: pointer;
+    color: var(--primary-clr);
+  }
+
+  #prev:hover,
+  #next:hover {
+    color: var(--uh-deep-red);
+  }
+
+  .weekdays {
+    width: 100%;
+    height: 100px;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    width: 100%;
+    font-weight: 500;
+    padding: 0 20px;
+    margin-bottom: 20px;
+
+    .day {
+      width: auto;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--primary-clr);
+      border: 1px solid var(--border);
+    }
+
+    .day:not(.prev-date, .next-date):hover {
+      color: #fff;
+      background-color: var(--primary-clr);
+    }
+
+    .prev-date,
+    .next-date {
+      color: #777174;
+    }
+
+    .active {
+      position: relative;
+      font-size: 2rem;
+      color: #fff;
+      background-color: var(--primary-clr);
+    }
+
+    .active::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      box-shadow: 0 0 10px 2px var(--primary-clr);
+    }
+
+    .today {
+      font-size: 2rem;
+    }
+
+    .event {
+      position: relative;
+    }
+
+    /* ::after basically adds a div inside the day div (the box)*/
+    .event::after {
+      background-color: var(--primary-clr);
+      content: "";
+      position: absolute;
+      bottom: 10%;
+      width: 5%;
+      height: 5px;
+      border-radius: 30px;
+
+      transform: translateX(-50%);
+    }
+
+    .event:hover::after {
+      background-color: #fff;
+    }
+
+    .active.event::after {
+      background-color: #fff;
+    }
+  }
+
+  .goto-today {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    color: var(--primary-clr);
+
+    gap: 5px;
+  }
+}
+
+button {
+  padding: 5px 10px;
+  border: 1px solid var(--primary-clr);
+  border-radius: 5px;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--primary-clr);
+}
+
+button:hover {
+  color: #fff;
+  background-color: var(--primary-clr);
+}
+.container2{
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+
+}
+.card{
+  width: 100%;
+  height: 10%;
+  background-color: var(--primary-clr);
+  border-radius: 5px;
+  
+}
+
+#header{
+  font-size: 3rem;
+  font-weight:400;
+}
+
+#footer{
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: 5%;
+  margin-bottom: 5%;
+}
+/*Responsiveness*/
+@media (max-width: 600px) {
+  body {
+    align-items: flex-start;
+  }
+
+  .container {
+    min-height: 100vh;
+    flex-direction: column;
+    border-radius: 0;
+  }
+
+  .container1 {
+    width: 100%;
+    padding: 10px;
+  }
+
+  #calendar {
+    min-height: 0;
+
+    .month {
+      height: 110px;
+      padding: 0 16px;
+      font-size: 1rem;
+    }
+
+    .weekdays {
+      height: 60px;
+      padding: 0 8px;
+      font-size: 0.75rem;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+    }
+
+    .days {
+      padding: 0 8px;
+      margin-bottom: 12px;
+
+      .day {
+        width: auto;
+        height: 60px;
+      }
+    }
+
+    .goto-today {
+      padding: 0 8px;
+      margin-bottom: 12px;
+    }
+  }
+}

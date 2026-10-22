@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="cal.css" />
+    <link rel="icon" href="/assets/uh_black.png" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="cal.js" defer></script>
+    <title>Coog Advising</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container1">
+        <div id="calendar">
+          <!-- nav bar-->
+          <div class="month">
+            <i class="material-icons" id="prev">chevron_left</i>
+            <div class="date"></div>
+            <i class="material-icons" id="next">chevron_right</i>
+          </div>
+          <!-- calendar nav bar-->
+          <div class="weekdays">
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thurs</div>
+            <div>Fri</div>
+            <div>Sat</div>
+            <div>Sun</div>
+          </div>
+          <!-- calendar items-->
+          <div class="days"></div>
+
+          <!-- footer -->
+          <div class="goto-today">
+            <button id="today-btn">Today</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- advisor cards -->
+      <div class="container2">
+        <div id="header"></div>
+        <div class="card">
+
+        </div>
+        <div id="footer">
+          <a href="transaction-form.html">
+            <button id="next-btn">Next</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
