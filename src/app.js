@@ -59,7 +59,13 @@ function checkStudentId(id) {
   return id.length === STUDENT_ID_LENGTH;
 }
 
-function updateValidationMessage(element, value, isValid, validText, invalidText) {
+function updateValidationMessage(
+  element,
+  value,
+  isValid,
+  validText,
+  invalidText,
+) {
   if (value === "") {
     element.textContent = "";
     return;
@@ -156,35 +162,31 @@ async function handleSubmit(event) {
   submitButton.disabled = true;
   setFormMessage("Sending your advising request...");
 
-  // try {
-  //   const response = await fetch("/api/expenses", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(request),
-  //   });
-  //   const result = await response.json();
+  try {
+    const response = await fetch("/api/expenses", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(request),
+    });
 
-  //   if (!response.ok) {
-  //     setFormMessage(
-  //       `Request rejected: ${result.message || "Please check your information."}`,
-  //       "error",
-  //     );
-  //     return;
-  //   }
+    const result = await response.json(); // apparently response only responds when the status code is sent, so other day may still be transmitting
 
-  //   setFormMessage(
-  //     `Local API accepted your request (not saved to a database): ${result.message} Confirmation: ${result.transactionId}.`,
-  //     "success",
-  //   );
-  // } catch (error) {
-  //   console.error("Advising request failed:", error);
-  //   setFormMessage(
-  //     "Could not reach the local API or read its response. Is npm start running?",
-  //     "error",
-  //   );
-  // } finally {
-  //   submitButton.disabled = false;
-  // }
+    if (!response.ok) {
+      setFormMessage(
+        "There was an issue submitting the form. Please check check your data and submit again.",
+      );
+      return;
+    }
+
+    setFormMessage(`Local API accepted (not saved) ${response.message}`);
+  } catch (error) {
+    console.error("The API Request Failed", error);
+    setFormMessage(
+      "Could not reach the local API or your server is not running.",
+    );
+  } finally {
+    submitButton.disabled = false;
+  }
 }
 
 advisingDate.min = tomorrowLocalString();

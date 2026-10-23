@@ -18,49 +18,44 @@ function createTransactionId() {
 function fail(message) {
   return {
     success: false,
-    message
+    message,
   };
 }
 
-function processRequest(request){
-    if (!request)
-        return fail("Invalid request.");
+function processRequest(request) {
+  if (!request) return fail("Invalid request.");
 
-    const email = request.email || "";
-    const psid = String(request.psid || "");
-    const date = request.date; // selected through date input field, outputs in YYYY-MM-DD format
-    const today = getTodayString();
+  const email = request.email || "";
+  const psid = String(request.psid || "");
+  const date = request.date; // selected through date input field, outputs in YYYY-MM-DD format
+  const today = getTodayString();
 
-    // psid must be 7 digits
-    if (!/^\d{7}$/.test(psid))
-        return fail("The PSID length is incorrect");
+  // psid must be 7 digits
+  if (!/^\d{7}$/.test(psid)) return fail("The PSID length is incorrect");
 
-    // email must end in cougarnet.uh.edu
+  // email must end in cougarnet.uh.edu
 
-    if (typeof email !== "string" || !email.endsWith("@cougarnet.uh.edu"))
-        return fail("Please enter the correct domain");
+  if (typeof email !== "string" || !email.endsWith("@cougarnet.uh.edu"))
+    return fail("Please enter the correct domain");
 
-    // requested date must be selected
-    if (!date)
-        return fail("Please select a valid date");
+  // requested date must be selected
+  if (!date) return fail("Please select a valid date");
 
-    // Date input values are in YYYY-MM-DD format, so string comparison is chronological.
-    if (date === today)
-        return fail("The selected date can't be today")
+  // Date input values are in YYYY-MM-DD format, so string comparison is chronological.
+  if (date === today) return fail("The selected date can't be today");
 
-    if (date < today)
-        return fail("The selected date can not be in the past")
-    
-    return{
-        success: true,
-        transactionId: createTransactionId(),
-        status: "Submitted",
-        submittedAt: new Date().toISOString(),
-        message: "Your request has been sent!"
-    }
+  if (date < today) return fail("The selected date can not be in the past");
+
+  return {
+    success: true,
+    transactionId: createTransactionId(),
+    status: "Submitted",
+    submittedAt: new Date().toISOString(),
+    message: "Your request has been sent!",
+  };
 }
 
 module.exports = {
-    processRequest,
-    getTodayString
-}
+  processRequest,
+  getTodayString,
+};

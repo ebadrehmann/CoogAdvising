@@ -13,7 +13,6 @@ app.post("/api/expenses", (req, res) => {
   return res.status(result.success ? 200 : 400).json(result);
 });
 
-
 if (require.main === module) {
   const port = Number(process.env.PORT) || 3000;
   app.listen(port, () => {
