@@ -1,13 +1,17 @@
-const express = require("express");
-const { processExpense } = require("../backend/backend");
-const app = express();
-app.use(express.json());
+"use strict";
 
+const path = require("node:path");
+const express = require("express");
+const { processRequest } = require("../backend/backend.js");
+
+const app = express();
+app.use(express.json({ limit: "20kb" }));
+app.use(express.static(path.join(__dirname, "..", "src")));
 
 app.post("/api/expenses", (req, res) => {
-const result = processExpense(req.body);
-return res.status(result.success ? 200 : 400).json(result);
-})
+  const result = processRequest(req.body);
+  return res.status(result.success ? 200 : 400).json(result);
+});
 
 
 if (require.main === module) {

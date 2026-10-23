@@ -1,22 +1,5 @@
 "use strict";
 
-/*
-example input, i've omitted some fields for the current milestone assignment for the sake of clarity & clean code, however we'll add more as we move on.
-{
-  "studentName": "Jane Doe",
-  "studentEmail": "jdoe@cougarnet.uh.edu",
-  "psid": "1234567",
-  "studentMajor": "Computer Science",
-  "graduationTerm": "Spring",
-  "graduationYear": 2027,
-  "advisingDate": "2099-06-15",
-  "advisingTime": "10:00",
-  "advisorName": "Dr. Smith",
-  "appointmentType": "Virtual",
-  "appointmentPurpose": "Discuss graduation requirements"
-}
-*/
-
 function getTodayString() {
   const today = new Date();
   const year = today.getFullYear();
@@ -38,7 +21,6 @@ function fail(message) {
     message
   };
 }
-
 
 function processRequest(request){
     if (!request)

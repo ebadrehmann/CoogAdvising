@@ -15,6 +15,19 @@ body {
   color: #8b0f26;
 }
 
+.form-message {
+  margin: 14px 0 0;
+  font-weight: 700;
+}
+
+.error-message {
+  color: #8b0f26;
+}
+
+.success-message {
+  color: #176b36;
+}
+
 .page-container {
   width: 92%;
   max-width: 1000px;
@@ -142,6 +155,11 @@ button {
 button:hover {
   background: #980c23;
   border-color: #980c23;
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: wait;
 }
 
 button:focus-visible {
