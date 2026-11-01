@@ -34,7 +34,6 @@ function processRequest(request) {
   if (!/^\d{7}$/.test(psid)) return fail("The PSID length is incorrect");
 
   // email must end in cougarnet.uh.edu
-
   if (typeof email !== "string" || !email.endsWith("@cougarnet.uh.edu"))
     return fail("Please enter the correct domain");
 
@@ -43,7 +42,6 @@ function processRequest(request) {
 
   // Date input values are in YYYY-MM-DD format, so string comparison is chronological.
   if (date === today) return fail("The selected date can't be today");
-
   if (date < today) return fail("The selected date can not be in the past");
 
   return {

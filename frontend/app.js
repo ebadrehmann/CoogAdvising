@@ -162,36 +162,37 @@ async function handleSubmit(event) {
   submitButton.disabled = true;
   setFormMessage("Sending your advising request...");
 
-  try {
-    const response = await fetch("/api/expenses", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(request),
-    });
+    try {
+      const response = await fetch("/api/expenses", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(request),
+      });
 
-    const result = await response.json(); // apparently response only responds when the status code is sent, so other day may still be transmitting
+      const result = await response.json(); // apparently response only responds when the status code is sent, so other day may still be transmitting
 
-    if (!response.ok) {
+      if (!response.ok) {
+        setFormMessage(
+          "There was an issue submitting the form. Please check check your data and submit again.",
+        );
+        return;
+      }
+
+      setFormMessage(`Local API accepted (not saved) ${response.message}`);
+    } catch (error) {
+      console.error("The API Request Failed", error);
       setFormMessage(
-        "There was an issue submitting the form. Please check check your data and submit again.",
+        "Could not reach the local API or your server is not running.",
       );
-      return;
+    } finally {
+      submitButton.disabled = false;
     }
-
-    setFormMessage(`Local API accepted (not saved) ${response.message}`);
-  } catch (error) {
-    console.error("The API Request Failed", error);
-    setFormMessage(
-      "Could not reach the local API or your server is not running.",
-    );
-  } finally {
-    submitButton.disabled = false;
   }
-}
 
-advisingDate.min = tomorrowLocalString();
-studentId.addEventListener("input", updateValidStudentIdMessage);
-advisorName.addEventListener("input", updateValidAdvisorMessage);
-studentMajor.addEventListener("input", updateValidAdvisorMessage);
-studentEmail.addEventListener("input", updateValidEmailMessage);
-form.addEventListener("submit", handleSubmit);
+  advisingDate.min = tomorrowLocalString();
+  studentId.addEventListener("input", updateValidStudentIdMessage);
+  advisorName.addEventListener("input", updateValidAdvisorMessage);
+  studentMajor.addEventListener("input", updateValidAdvisorMessage);
+  studentEmail.addEventListener("input", updateValidEmailMessage);
+  form.addEventListener("submit", handleSubmit);
+
